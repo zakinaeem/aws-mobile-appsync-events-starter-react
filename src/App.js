@@ -7,6 +7,7 @@ import appSyncConfig from "./AppSync";
 import { ApolloProvider } from "react-apollo";
 import AWSAppSyncClient, { defaultDataIdFromObject } from "aws-appsync";
 import { Rehydrated } from "aws-appsync-react";
+import localForage from "localforage";
 
 import './App.css';
 import AllEvents from './Components/AllEvents';
@@ -52,7 +53,8 @@ const client = new AWSAppSyncClient({
 
       return id;
     }
-  }
+  },
+  customStore: localForage
 });
 
 const WithProvider = () => (
